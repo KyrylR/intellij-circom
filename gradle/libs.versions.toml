@@ -1,6 +1,6 @@
 [versions]
 # libraries
-exampleLibrary = "24.1.0"
+antlr4IntellijAdaptor = "0.1"
 
 # plugins
 kotlin = "1.9.24"
@@ -10,7 +10,7 @@ qodana = "2024.1.5"
 kover = "0.8.1"
 
 [libraries]
-exampleLibrary = { group = "com.example", name = "exampleLibrary", version.ref = "exampleLibrary" }
+antlr4IntellijAdaptor = { group = "org.antlr", name = "antlr4-intellij-adaptor", version.ref = "antlr4IntellijAdaptor" }
 
 [plugins]
 changelog = { id = "org.jetbrains.changelog", version.ref = "changelog" }
