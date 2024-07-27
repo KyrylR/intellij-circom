@@ -84,6 +84,22 @@ MAIN
 PARALLEL
     : 'parallel' ;
 
+PARENTHESIS_OPEN: '(' ;
+
+PARENTHESIS_CLOSE: ')' ;
+
+SQUER_BRACKET_OPEN: '[' ;
+
+SQUER_BRACKET_CLOSE: ']' ;
+
+CURLY_BRACKET_OPEN: '{' ;
+
+CURLY_BRACKET_CLOSE: '}' ;
+
+SEMICOLON: ';' ;
+
+COMMA: ',' ;
+
 ASSIGNMENT: '=' ;
 
 ASSIGMENT_OP: '+=' | '-=' | '*=' | '**=' | '/=' | '\\=' | '%=' | '<<=' | '>>=' | '&=' | '^=' | '|=' ;

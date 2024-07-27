@@ -8,12 +8,12 @@ circuit
     ;
 
 pragmaDeclaration
-    : PRAGMA CIRCOM VERSION ';'
-    | PRAGMA CUSTOM_TEMPLATES ';'
+    : PRAGMA CIRCOM VERSION SEMICOLON
+    | PRAGMA CUSTOM_TEMPLATES SEMICOLON
     ;
 
 includeDeclaration
-    : INCLUDE PACKAGE_NAME ';'
+    : INCLUDE PACKAGE_NAME SEMICOLON
     ;
 
 blockDeclaration
@@ -22,32 +22,36 @@ blockDeclaration
     ;
 
 functionDeclaration
-    : FUNCTION ID '(' args* ')' functionStmt
+    : FUNCTION ID PARENTHESIS_OPEN args* PARENTHESIS_CLOSE functionStmt
     ;
 
 functionStmt
-    : '{' functionStmt* '}'
+    : CURLY_BRACKET_OPEN functionStmt* CURLY_BRACKET_CLOSE
     | ID SELF_OP
     | varDeclaration
     | expression (ASSIGNMENT | ASSIGMENT_OP) expression
     | IF parExpression functionStmt (ELSE functionStmt)?
     | WHILE parExpression functionStmt
-    | FOR '(' forControl ')' functionStmt
+    | FOR PARENTHESIS_OPEN forControl PARENTHESIS_CLOSE functionStmt
     | RETURN expression
-    | functionStmt ';'
+    | functionStmt SEMICOLON
     ;
 
 templateDeclaration
-    : TEMPLATE ID '(' args* ')' statement*
-    | TEMPLATE CUSTOM ID '(' args* ')' statement*
+    : TEMPLATE ID PARENTHESIS_OPEN args* PARENTHESIS_CLOSE statement*
+    | TEMPLATE CUSTOM ID PARENTHESIS_OPEN args* PARENTHESIS_CLOSE statement*
     ;
 
 componentMainDeclaration
-    : COMPONENT MAIN ('{' PUBLIC '[' args ']'  '}')? '=' ID '(' intSequence* ')' ';'
+    : COMPONENT MAIN
+        (
+            CURLY_BRACKET_OPEN PUBLIC SQUER_BRACKET_OPEN args SQUER_BRACKET_CLOSE CURLY_BRACKET_CLOSE
+        )?
+        ASSIGNMENT ID PARENTHESIS_OPEN intSequence* PARENTHESIS_CLOSE SEMICOLON
     ;
 
 statement
-    : '{' statement* '}'
+    : CURLY_BRACKET_OPEN statement* CURLY_BRACKET_CLOSE
     | ID SELF_OP
     | varDeclaration
     | signalDeclaration
@@ -58,28 +62,28 @@ statement
     | expression RIGHT_ASSIGNMENT primary
     | '_' (ASSIGNMENT | LEFT_ASSIGNMENT) (expression | blockInstantiation)
     | (expression | blockInstantiation) RIGHT_ASSIGNMENT '_'
-    | '(' argsWithUnderscore ')' (ASSIGNMENT | LEFT_ASSIGNMENT) blockInstantiation
-    | blockInstantiation RIGHT_ASSIGNMENT '(' argsWithUnderscore ')'
+    | PARENTHESIS_OPEN argsWithUnderscore PARENTHESIS_CLOSE (ASSIGNMENT | LEFT_ASSIGNMENT) blockInstantiation
+    | blockInstantiation RIGHT_ASSIGNMENT PARENTHESIS_OPEN argsWithUnderscore PARENTHESIS_CLOSE
     | IF parExpression statement (ELSE statement)?
     | WHILE parExpression statement
-    | FOR '(' forControl ')' statement
+    | FOR PARENTHESIS_OPEN forControl PARENTHESIS_CLOSE statement
     | ASSERT parExpression
     | LOG parExpression
-    | statement ';'
+    | statement SEMICOLON
     ;
 
-forControl: forInit ';' expression ';' forUpdate ;
+forControl: forInit SEMICOLON expression SEMICOLON forUpdate ;
 
 forInit: varDefinition (ASSIGNMENT rhsValue)? ;
 
 forUpdate: expression | (ID (SELF_OP | (ASSIGNMENT expression))) ;
 
-parExpression: '(' expression ')' ;
+parExpression: PARENTHESIS_OPEN expression PARENTHESIS_CLOSE ;
 
 expression
     : primary
     | expression '.' ID
-    | ID '.' ID '[' expression ']'
+    | ID '.' ID SQUER_BRACKET_OPEN expression SQUER_BRACKET_CLOSE
     | expression '?' expression ':' expression
     | blockInstantiation
     | ('~' | '!' | '-') expression
@@ -92,8 +96,8 @@ expression
     ;
 
 primary
-    : '(' expression ')'
-    | '[' expression (',' expression)* ']'
+    : PARENTHESIS_OPEN expression PARENTHESIS_CLOSE
+    | SQUER_BRACKET_OPEN expression (COMMA expression)* SQUER_BRACKET_CLOSE
     | INT
     | ID arrayDimension*
     | args
@@ -106,34 +110,34 @@ componentDeclaration
     : componentDefinition arrayDimension* (ASSIGNMENT blockInstantiation)?
     ;
 
-signalDefinition: SIGNAL SIGNAL_TYPE? ('{' args '}')? ID arrayDimension*;
+signalDefinition: SIGNAL SIGNAL_TYPE? (CURLY_BRACKET_OPEN args CURLY_BRACKET_CLOSE)? ID arrayDimension*;
 
 signalDeclaration
     : signalDefinition (LEFT_ASSIGNMENT rhsValue)?
-    | signalDefinition (',' ID arrayDimension*)*
+    | signalDefinition (COMMA ID arrayDimension*)*
     ;
 
 varDefinition: VAR ID arrayDimension* ;
 
 varDeclaration
     : varDefinition (ASSIGNMENT rhsValue)?
-    | varDefinition (',' ID arrayDimension*)*
+    | varDefinition (COMMA ID arrayDimension*)*
     ;
 
 rhsValue: expression | blockInstantiation ;
 
 componentCall
-    : '(' expression (',' expression)* ')'
-    | '(' ID LEFT_ASSIGNMENT expression (',' ID LEFT_ASSIGNMENT expression)* ')'
-    | '(' expression RIGHT_ASSIGNMENT ID (',' expression RIGHT_ASSIGNMENT ID)* ')'
+    : PARENTHESIS_OPEN expression (COMMA expression)* PARENTHESIS_CLOSE
+    | PARENTHESIS_OPEN ID LEFT_ASSIGNMENT expression (COMMA ID LEFT_ASSIGNMENT expression)* PARENTHESIS_CLOSE
+    | PARENTHESIS_OPEN expression RIGHT_ASSIGNMENT ID (COMMA expression RIGHT_ASSIGNMENT ID)* PARENTHESIS_CLOSE
     ;
 
-blockInstantiation: ID '(' ((expression)* | (expression (',' expression)*)) ')' componentCall? ;
+blockInstantiation: ID PARENTHESIS_OPEN ((expression)* | (expression (COMMA expression)*)) PARENTHESIS_CLOSE componentCall? ;
 
-arrayDimension: '[' (INT | ID | expression) ']' ;
+arrayDimension: SQUER_BRACKET_OPEN (INT | ID | expression) SQUER_BRACKET_CLOSE ;
 
-argsWithUnderscore: ('_' | ID) (',' ('_' | ID) )* ;
+argsWithUnderscore: ('_' | ID) (COMMA ('_' | ID) )* ;
 
-args: ID (',' ID)* ;
+args: ID (COMMA ID)* ;
 
-intSequence: INT (',' INT)* ;
+intSequence: INT (COMMA INT)* ;

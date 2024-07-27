@@ -1,0 +1,13 @@
+<?xml version='1.0'?>
+<list>
+  <option name="CIRCOM_SIGNAL_TYPE">
+    <value>
+      <option name="FOREGROUND" value="879DE0"/>
+    </value>
+  </option>
+  <option name="CIRCOM_CONSTRAINT_GEN">
+    <value>
+      <option name="FOREGROUND" value="4EC9B0"/>
+    </value>
+  </option>
+</list>

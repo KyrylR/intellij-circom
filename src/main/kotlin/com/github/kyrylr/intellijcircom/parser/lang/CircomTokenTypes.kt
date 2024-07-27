@@ -29,11 +29,6 @@ object CircomTokenTypes {
         CircomLexer.LINE_COMMENT
     )
 
-    val WHITESPACES: TokenSet = PSIElementTypeFactory.createTokenSet(
-        CircomLanguage,
-        CircomLexer.WS
-    )
-
     val KEYWORDS: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
         CircomLexer.SIGNAL,
@@ -67,5 +62,45 @@ object CircomTokenTypes {
     val STRINGS: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
         CircomLexer.PACKAGE_NAME
+    )
+
+    val CONSTRAINTS_GENERATORS: TokenSet = PSIElementTypeFactory.createTokenSet(
+        CircomLanguage,
+        CircomLexer.LEFT_ASSIGNMENT,
+        CircomLexer.RIGHT_ASSIGNMENT,
+        CircomLexer.CONSTRAINT_EQ,
+    )
+
+    val SIGNAL_TYPES: TokenSet = PSIElementTypeFactory.createTokenSet(
+        CircomLanguage,
+        CircomLexer.SIGNAL_TYPE
+    )
+
+    val COMMA: TokenSet = PSIElementTypeFactory.createTokenSet(
+        CircomLanguage,
+        CircomLexer.COMMA
+    )
+
+    val SEMICOLON: TokenSet = PSIElementTypeFactory.createTokenSet(
+        CircomLanguage,
+        CircomLexer.SEMICOLON
+    )
+
+    val SQUARE_BRACKET: TokenSet = PSIElementTypeFactory.createTokenSet(
+        CircomLanguage,
+        CircomLexer.SQUER_BRACKET_OPEN,
+        CircomLexer.SQUER_BRACKET_CLOSE
+    )
+
+    val CURLY_BRACKET: TokenSet = PSIElementTypeFactory.createTokenSet(
+        CircomLanguage,
+        CircomLexer.CURLY_BRACKET_OPEN,
+        CircomLexer.CURLY_BRACKET_CLOSE
+    )
+
+    val PARENTHESIS: TokenSet = PSIElementTypeFactory.createTokenSet(
+        CircomLanguage,
+        CircomLexer.PARENTHESIS_OPEN,
+        CircomLexer.PARENTHESIS_CLOSE
     )
 }

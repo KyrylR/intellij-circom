@@ -15,5 +15,9 @@
                   fieldName="INSTANCE"/>
 
         <lang.syntaxHighlighterFactory language="Circom" implementationClass="com.github.kyrylr.intellijcircom.parser.lang.CircomSyntaxHighlighterFactory"/>
+
+        <additionalTextAttributes scheme="Default" file="colorSchemes/CircomDefault.xml"/>
+        <additionalTextAttributes scheme="Dark" file="colorSchemes/CircomDefault.xml"/>
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/CircomDefault.xml"/>
     </extensions>
 </idea-plugin>
