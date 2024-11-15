@@ -17,7 +17,7 @@
 - [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
 
 <!-- Plugin description -->
-Enables syntax highlighting for the Circom language in IntelliJ IDEA.
+Enables syntax highlighting for the [Circom](https://docs.circom.io/) language in IntelliJ IDEA.
 <!-- Plugin description end -->
 
 ## Installation
