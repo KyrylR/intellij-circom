@@ -12,7 +12,7 @@ object CircomLanguage : Language("Circom", "text/circom") {
     override fun isCaseSensitive() = true
 }
 
-object SolidityFileType : LanguageFileType(CircomLanguage) {
+object CircomFileType : LanguageFileType(CircomLanguage) {
     object DEFAULTS {
         const val DESCRIPTION = "Circom file"
     }

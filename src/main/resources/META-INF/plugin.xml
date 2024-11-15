@@ -10,7 +10,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="Circom file"
                   language="Circom"
-                  implementationClass="com.github.kyrylr.intellijcircom.parser.lang.SolidityFileType"
+                  implementationClass="com.github.kyrylr.intellijcircom.parser.lang.CircomFileType"
                   extensions="circom"
                   fieldName="INSTANCE"/>
 

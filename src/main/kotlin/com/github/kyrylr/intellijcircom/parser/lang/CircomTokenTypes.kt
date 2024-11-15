@@ -29,17 +29,29 @@ object CircomTokenTypes {
         CircomLexer.LINE_COMMENT
     )
 
+    val WHITESPACES: TokenSet = PSIElementTypeFactory.createTokenSet(
+        CircomLanguage,
+        CircomLexer.WS
+    )
+
     val KEYWORDS: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
+        CircomLexer.PRAGMA,
+        CircomLexer.CIRCOM,
+        CircomLexer.CUSTOM_TEMPLATES,
+        CircomLexer.INCLUDE,
+        CircomLexer.CUSTOM,
+        CircomLexer.PARALLEL,
+        CircomLexer.BUS,
+        CircomLexer.TEMPLATE,
+        CircomLexer.FUNCTION,
+        CircomLexer.MAIN,
+        CircomLexer.PUBLIC,
+        CircomLexer.COMPONENT,
+        CircomLexer.VAR,
         CircomLexer.SIGNAL,
         CircomLexer.INPUT,
         CircomLexer.OUTPUT,
-        CircomLexer.PUBLIC,
-        CircomLexer.TEMPLATE,
-        CircomLexer.COMPONENT,
-        CircomLexer.VAR,
-        CircomLexer.FUNCTION,
-        CircomLexer.RETURN,
         CircomLexer.IF,
         CircomLexer.ELSE,
         CircomLexer.FOR,
@@ -47,28 +59,26 @@ object CircomTokenTypes {
         CircomLexer.DO,
         CircomLexer.LOG,
         CircomLexer.ASSERT,
-        CircomLexer.INCLUDE,
-        CircomLexer.PRAGMA,
-        CircomLexer.CIRCOM,
-        CircomLexer.CUSTOM,
-        CircomLexer.CUSTOM_TEMPLATES
+        CircomLexer.RETURN
     )
 
     val INTEGERS: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
-        CircomLexer.INT
+        CircomLexer.NUMBER
     )
 
     val STRINGS: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
-        CircomLexer.PACKAGE_NAME
+        CircomLexer.STRING
     )
 
     val CONSTRAINTS_GENERATORS: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
+        CircomLexer.EQ_CONSTRAINT,
         CircomLexer.LEFT_ASSIGNMENT,
         CircomLexer.RIGHT_ASSIGNMENT,
-        CircomLexer.CONSTRAINT_EQ,
+        CircomLexer.LEFT_CONSTRAINT,
+        CircomLexer.RIGHT_CONSTRAINT
     )
 
     val SIGNAL_TYPES: TokenSet = PSIElementTypeFactory.createTokenSet(
@@ -88,19 +98,19 @@ object CircomTokenTypes {
 
     val SQUARE_BRACKET: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
-        CircomLexer.SQUER_BRACKET_OPEN,
-        CircomLexer.SQUER_BRACKET_CLOSE
+        CircomLexer.LB,
+        CircomLexer.RB
     )
 
     val CURLY_BRACKET: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
-        CircomLexer.CURLY_BRACKET_OPEN,
-        CircomLexer.CURLY_BRACKET_CLOSE
+        CircomLexer.LC,
+        CircomLexer.RC
     )
 
     val PARENTHESIS: TokenSet = PSIElementTypeFactory.createTokenSet(
         CircomLanguage,
-        CircomLexer.PARENTHESIS_OPEN,
-        CircomLexer.PARENTHESIS_CLOSE
+        CircomLexer.LP,
+        CircomLexer.RP
     )
 }
