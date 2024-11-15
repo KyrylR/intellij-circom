@@ -1,18 +1,23 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.kyrylr.intellijcircom</id>
-    <name>intellij-circom</name>
+    <name>Circom</name>
     <vendor>kyrylr</vendor>
 
     <depends>com.intellij.modules.platform</depends>
-
-    <resource-bundle>messages.MyBundle</resource-bundle>
+    <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.kyrylr.intellijcircom.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
+        <fileType name="Circom file"
+                  language="Circom"
+                  implementationClass="com.github.kyrylr.intellijcircom.parser.lang.CircomFileType"
+                  extensions="circom"
+                  fieldName="INSTANCE"/>
 
-    <applicationListeners>
-        <listener class="com.github.kyrylr.intellijcircom.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+        <lang.syntaxHighlighterFactory language="Circom" implementationClass="com.github.kyrylr.intellijcircom.parser.lang.CircomSyntaxHighlighterFactory"/>
+
+        <additionalTextAttributes scheme="Default" file="colorSchemes/CircomDefault.xml"/>
+        <additionalTextAttributes scheme="Dark" file="colorSchemes/CircomDefault.xml"/>
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/CircomDefault.xml"/>
+    </extensions>
 </idea-plugin>

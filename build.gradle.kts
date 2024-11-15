@@ -6,6 +6,8 @@ fun environment(key: String) = providers.environmentVariable(key)
 
 plugins {
     id("java") // Java support
+    id("antlr") // ANTLR support
+
     alias(libs.plugins.kotlin) // Kotlin support
     alias(libs.plugins.gradleIntelliJPlugin) // Gradle IntelliJ Plugin
     alias(libs.plugins.changelog) // Gradle Changelog Plugin
@@ -23,10 +25,12 @@ repositories {
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
 dependencies {
-//    implementation(libs.exampleLibrary)
+    implementation(libs.antlr4IntellijAdaptor)
+
+    antlr("org.antlr:antlr4:4.13.1")
+    implementation("org.antlr:antlr4-runtime:4.13.1")
 }
 
-// Set the JVM language level used to build the project.
 kotlin {
     jvmToolchain(17)
 }
@@ -45,6 +49,11 @@ intellij {
 changelog {
     groups.empty()
     repositoryUrl = properties("pluginRepositoryUrl")
+}
+
+configure<JavaPluginExtension> {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
 
 // Configure Gradle Kover Plugin - read more: https://github.com/Kotlin/kotlinx-kover#configuration
@@ -118,4 +127,36 @@ tasks {
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels = properties("pluginVersion").map { listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" }) }
     }
+}
+
+tasks.named<AntlrTask>("generateGrammarSource") {
+    include("**/*.g4")
+
+    arguments = arguments + listOf(
+        "-visitor",
+        "-package", "com.github.kyrylr.intellijcircom.parser",
+        "-Xexact-output-dir"
+    )
+
+    doLast {
+        val parserPackagePath = "${outputDirectory.canonicalPath}/com/github/kyrylr/intellijcircom/parser"
+
+        copy {
+            from(outputDirectory.canonicalPath)
+            into(parserPackagePath)
+            include("*Circom*")
+        }
+
+        delete(fileTree(outputDirectory) {
+            include("*Circom*")
+        })
+    }
+}
+
+tasks.named("compileKotlin") {
+    mustRunAfter("generateGrammarSource")
+}
+
+tasks.named("compileTestKotlin") {
+    mustRunAfter("generateGrammarSource")
 }
