@@ -1,4 +1,4 @@
-package com.github.kyrylr.intellijcircom.parser.lang
+package com.github.kyrylr.circom.parser.lang
 
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.openapi.fileTypes.FileType

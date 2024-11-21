@@ -1,8 +1,8 @@
-package com.github.kyrylr.intellijcircom.parser.adaptors
+package com.github.kyrylr.circom.parser.adaptors
 
-import com.github.kyrylr.intellijcircom.parser.CircomLexer
-import com.github.kyrylr.intellijcircom.parser.CircomParser
-import com.github.kyrylr.intellijcircom.parser.lang.CircomLanguage
+import com.github.kyrylr.circom.parser.CircomLexer
+import com.github.kyrylr.circom.parser.CircomParser
+import com.github.kyrylr.circom.parser.lang.CircomLanguage
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerAdaptor
 import org.antlr.intellij.adaptor.lexer.PSIElementTypeFactory
 import org.antlr.v4.runtime.Lexer

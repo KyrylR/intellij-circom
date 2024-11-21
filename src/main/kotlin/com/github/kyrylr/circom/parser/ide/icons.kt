@@ -1,4 +1,4 @@
-package com.github.kyrylr.intellijcircom.parser.ide
+package com.github.kyrylr.circom.parser.ide
 
 import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon

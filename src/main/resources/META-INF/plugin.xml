@@ -1,6 +1,6 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.kyrylr.intellijcircom</id>
+    <id>com.github.kyrylr.circom</id>
     <name>Circom</name>
     <vendor>kyrylr</vendor>
 
@@ -10,11 +10,11 @@
     <extensions defaultExtensionNs="com.intellij">
         <fileType name="Circom file"
                   language="Circom"
-                  implementationClass="com.github.kyrylr.intellijcircom.parser.lang.CircomFileType"
+                  implementationClass="com.github.kyrylr.circom.parser.lang.CircomFileType"
                   extensions="circom"
                   fieldName="INSTANCE"/>
 
-        <lang.syntaxHighlighterFactory language="Circom" implementationClass="com.github.kyrylr.intellijcircom.parser.lang.CircomSyntaxHighlighterFactory"/>
+        <lang.syntaxHighlighterFactory language="Circom" implementationClass="com.github.kyrylr.circom.parser.lang.CircomSyntaxHighlighterFactory"/>
 
         <additionalTextAttributes scheme="Default" file="colorSchemes/CircomDefault.xml"/>
         <additionalTextAttributes scheme="Dark" file="colorSchemes/CircomDefault.xml"/>

@@ -1,7 +1,7 @@
-package com.github.kyrylr.intellijcircom.parser.lang
+package com.github.kyrylr.circom.parser.lang
 
-import com.github.kyrylr.intellijcircom.parser.CircomLexer
-import com.github.kyrylr.intellijcircom.parser.adaptors.CircomLexerAdaptor
+import com.github.kyrylr.circom.parser.CircomLexer
+import com.github.kyrylr.circom.parser.adaptors.CircomLexerAdaptor
 import com.github.kyrylr.intellijcircom.plugin.CircomTokenTypes
 import com.intellij.lexer.Lexer
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors

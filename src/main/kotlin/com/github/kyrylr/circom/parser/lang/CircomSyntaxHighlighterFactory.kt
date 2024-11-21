@@ -1,4 +1,4 @@
-package com.github.kyrylr.intellijcircom.parser.lang
+package com.github.kyrylr.circom.parser.lang
 
 import com.intellij.openapi.fileTypes.SyntaxHighlighter
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory

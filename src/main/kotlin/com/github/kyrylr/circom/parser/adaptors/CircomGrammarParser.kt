@@ -1,10 +1,10 @@
-package com.github.kyrylr.intellijcircom.parser.adaptors
+package com.github.kyrylr.circom.parser.adaptors
 
 import com.intellij.psi.tree.IElementType
 import com.intellij.psi.tree.IFileElementType
 
-import com.github.kyrylr.intellijcircom.parser.CircomParser
-import com.github.kyrylr.intellijcircom.parser.lang.CircomLanguage
+import com.github.kyrylr.circom.parser.CircomParser
+import com.github.kyrylr.circom.parser.lang.CircomLanguage
 import org.antlr.intellij.adaptor.parser.ANTLRParserAdaptor
 
 import org.antlr.v4.runtime.Parser

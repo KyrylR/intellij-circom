@@ -1,4 +1,4 @@
-package com.github.kyrylr.intellijcircom.parser.adaptors
+package com.github.kyrylr.circom.parser.adaptors
 
 import org.antlr.intellij.adaptor.lexer.ANTLRLexerState
 import org.antlr.v4.runtime.misc.IntegerStack

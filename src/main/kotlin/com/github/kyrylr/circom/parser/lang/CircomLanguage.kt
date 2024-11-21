@@ -1,6 +1,6 @@
-package com.github.kyrylr.intellijcircom.parser.lang
+package com.github.kyrylr.circom.parser.lang
 
-import com.github.kyrylr.intellijcircom.parser.ide.CircomIcons
+import com.github.kyrylr.circom.parser.ide.CircomIcons
 import com.intellij.lang.Language
 import com.intellij.openapi.fileTypes.LanguageFileType
 import com.intellij.openapi.vfs.VirtualFile
