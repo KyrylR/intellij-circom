@@ -129,12 +129,12 @@ tasks.named<AntlrTask>("generateGrammarSource") {
 
     arguments = arguments + listOf(
         "-visitor",
-        "-package", "com.github.kyrylr.intellijcircom.parser",
+        "-package", "com.github.kyrylr.circom.parser",
         "-Xexact-output-dir"
     )
 
     doLast {
-        val parserPackagePath = "${outputDirectory.canonicalPath}/com/github/kyrylr/intellijcircom/parser"
+        val parserPackagePath = "${outputDirectory.canonicalPath}/com/github/kyrylr/circom/parser"
 
         copy {
             from(outputDirectory.canonicalPath)
